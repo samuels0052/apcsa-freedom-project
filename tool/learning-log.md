@@ -6,7 +6,7 @@
 
 ---
 
-### 8/5/24:
+### 10/5/24:
 
 - Discovered that expo is the most popular framework for React Native, promoted on the official documentation
 - React Native allows you to compile apps into ios and android
@@ -17,7 +17,7 @@
 - Are there native swift features such as notification handling?
 - https://youtu.be/gvkqT_Uoahw?si=OIrGkkBx5R22gmnD
 
-### 8/6/24:
+### 10/6/24:
 
 - Error: "Error: EMFILE: too many open files, watch
   at FSEvent.FSWatcher.\_handle.onchange (node:internal/fs/watchers:207:21)"
@@ -43,6 +43,50 @@
   ```
 - Followed doc tutorial to style and run app
 - https://docs.expo.dev/tutorial/create-your-first-app/
+
+10/16/24:
+
+- https://reactnative.dev/docs/components-and-apis#user-interface
+- Read about the different components
+- User Interface
+  - Button: Handles touches and can render on any platform
+  - Switch: boolean
+- List Views: can only render components that are already showing on screen
+  - FlatList: Good for scrollable lists
+  - SectionLists: same as flat lists but for organized sections across app
+- Other
+  - ActivityIndicator: dispolays loading indicator
+  - Alert: launches alert dialog similar to in HTML
+  - Animated: animation library to create animations in apps
+  - Modal: used to prevent content from going beyond a specific point on the screen
+- I want to research more into the IOS specific components
+
+10/18-22/24:
+
+- Watched tutorial on basic To-DO list in react native
+- https://youtu.be/0kL6nhutjQ8?si=oLlfbnAyKeS8qudO
+- Modified the CSS to learn how styles works
+- Had a challenging time understanding how to set the tasks without using an array and then realized it was the same as regular Next JS or React Development where you need to use components
+- Realized that my component knowledge of react carries over here
+- Was able to test app in the web
+- How to make responsive across screen sizes? Is it any different then just using flex?
+
+```tsx
+const [task, setTask] = useState("");
+const [tasks, setTasks] = useState<string[]>([]);
+
+const addTask = () => {
+  if (task.trim()) {
+    setTasks([...tasks, task.trim()]);
+    setTask("");
+  }
+};
+
+const deleteTask = (index: number) => {
+  const newTasks = tasks.filter((_, i) => i !== index);
+  setTasks(newTasks);
+};
+```
 
 <!--
 * Links you used today (websites, videos, etc)
