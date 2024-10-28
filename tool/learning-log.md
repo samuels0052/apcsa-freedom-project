@@ -88,6 +88,21 @@ const deleteTask = (index: number) => {
 };
 ```
 
+10/27/24:
+- https://youtu.be/HuwQwNDLaJ8?si=WWWbIhycAxxUUeML
+- Learned how to navigate between different screens in React Native
+- `initialRouteName` is what page the application should start on
+- `Stack.Navigator` contains all the screens of the app
+- Component is similar to a navbar
+```tsx
+<NavigationContainer>
+  <Stack.Navigator initialRouteName="Home">
+    <Stack.Screen name="Home" component={HomeScreen} />
+    <Stack.Screen name="Test" component={TestScreen} />
+  </Stack.Navigator>
+</NavigationContainer>
+```
+
 <!--
 * Links you used today (websites, videos, etc)
 * Things you tried, progress you made, etc
