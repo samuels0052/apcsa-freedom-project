@@ -94,6 +94,8 @@ const deleteTask = (index: number) => {
 - `initialRouteName` is what page the application should start on
 - `Stack.Navigator` contains all the screens of the app
 - Component is similar to a navbar
+- Did not have a lot of time this week to work with app but want to work on implementing `NavigationContainer` in app and do further testing
+- A-ha moment was realizing that you can have multiple screens but still need to set the initial route so app knows where to start
 ```tsx
 <NavigationContainer>
   <Stack.Navigator initialRouteName="Home">
