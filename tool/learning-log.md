@@ -44,7 +44,7 @@
 - Followed doc tutorial to style and run app
 - https://docs.expo.dev/tutorial/create-your-first-app/
 
-10/16/24:
+### 10/16/24:
 
 - https://reactnative.dev/docs/components-and-apis#user-interface
 - Read about the different components
@@ -61,7 +61,7 @@
   - Modal: used to prevent content from going beyond a specific point on the screen
 - I want to research more into the IOS specific components
 
-10/18-22/24:
+### 10/18-22/24:
 
 - Watched tutorial on basic To-DO list in react native
 - https://youtu.be/0kL6nhutjQ8?si=oLlfbnAyKeS8qudO
@@ -88,7 +88,7 @@ const deleteTask = (index: number) => {
 };
 ```
 
-10/27/24:
+### 10/27/24:
 - https://youtu.be/HuwQwNDLaJ8?si=WWWbIhycAxxUUeML
 - Learned how to navigate between different screens in React Native
 - `initialRouteName` is what page the application should start on
@@ -104,6 +104,16 @@ const deleteTask = (index: number) => {
   </Stack.Navigator>
 </NavigationContainer>
 ```
+
+### 11/3/24:
+* Followed along to arduino introduction course
+* Got display to output text
+* Created a system to chunk messages every 84 characters to ensure message can be properly displayed and provide a queue
+* Created a local dashboard using Node JS to send messages to the arduino while connected to computer
+* Lost the code when re-setting my laptop :(
+* https://www.youtube.com/watch?v=yi29dbPnu28&feature=youtu.be
+* ![](../blog/img/1.png)
+* ![](../blog/img/2.png)
 
 <!--
 * Links you used today (websites, videos, etc)
