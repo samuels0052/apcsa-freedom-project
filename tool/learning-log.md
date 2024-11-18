@@ -115,6 +115,36 @@ const deleteTask = (index: number) => {
 * ![](../blog/img/1.png)
 * ![](../blog/img/2.png)
 
+### 11/18/24:
+* Learned how to use buttons with arduino
+* https://youtu.be/yBgMJssXqHY?si=y9ude-IU6YvguwuI
+* https://youtu.be/0ZXYRU9KPG8?si=2b4cV8K4ECmHQGVY
+```cpp
+const int buttonPin = 2;
+const int ledPin = 13;
+bool ledState = false;
+bool buttonPressed = false;
+
+void setup() {
+  pinMode(buttonPin, INPUT_PULLUP);
+  pinMode(ledPin, OUTPUT);
+}
+
+void loop() {
+  int buttonState = digitalRead(buttonPin);
+
+  if (buttonState == LOW && !buttonPressed) {
+    buttonPressed = true;
+    ledState = !ledState;
+    digitalWrite(ledPin, ledState ? HIGH : LOW);
+  }
+
+  if (buttonState == HIGH) {
+    buttonPressed = false;
+  }
+}
+```
+
 <!--
 * Links you used today (websites, videos, etc)
 * Things you tried, progress you made, etc
