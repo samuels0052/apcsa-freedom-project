@@ -117,8 +117,15 @@ const deleteTask = (index: number) => {
 
 ### 11/18/24:
 * Learned how to use buttons with arduino
+* Learned hwot to read a circuit diagram
+  * Terms such as GND (Ground), 5V (5 Vault Pin), 3.3V (3.3 Vault Power Pin)
+  * VIN, 5V, GND all deal with power
+  * Rectangles with ohms are resistors and use omega symbol
+  * LEDs are frequently marked with polarity symbols
+  * Lines are wires
 * https://youtu.be/yBgMJssXqHY?si=y9ude-IU6YvguwuI
 * https://youtu.be/0ZXYRU9KPG8?si=2b4cV8K4ECmHQGVY
+* https://youtu.be/3zKvDF1cUYc?si=SIMUCeGfvLPe0F7e
 ```cpp
 const int buttonPin = 2;
 const int ledPin = 13;
