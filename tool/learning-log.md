@@ -152,6 +152,46 @@ void loop() {
 }
 ```
 
+11/24/25:
+* Learned how to use the expo router in React Native
+* Setup is similar to router in React JS
+```tsx
+import { Stack } from "expo-router";
+
+const RootLayout = () => {
+  return (
+    <Stack>
+      <Stack.Screen
+        name="(tabs)"
+        options={{
+          headerShown: false,
+        }}
+      />
+    </Stack>
+  );
+};
+
+export default RootLayout;
+```
+* Create a `(tabs)` folder to hold
+* `index.tsx` within the tabs folder is the home page
+```tsx
+import { Link, router } from "expo-router";
+import { Pressable, Text, View } from "react-native";
+```
+* https://youtu.be/Z20nUdAUGmM?si=APjRSKdGY8HC8O6Z
+* Create dynamic directories the same way as in Next JS with `[id].tsx`
+```tsx
+const UserPage = () => {
+  const { id } = useLocalSearchParams<{ id: string }>();
+
+  return (
+    <View>
+      <Text>User Page - {id}</Text>
+    </View>
+  );
+};
+```
 <!--
 * Links you used today (websites, videos, etc)
 * Things you tried, progress you made, etc
