@@ -192,6 +192,23 @@ const UserPage = () => {
   );
 };
 ```
+
+### 12/1/24:
+* Started researching encryption algorithms and studied other apps such as WhatsApp
+* Encrypted message is called a cipher
+* Once a password goes through an encryption algorithm it is called a hash
+* Symmetric Key System
+  * Not practical or commonly used
+  * Everyone has the same key but can be challenging to securely distribute
+* Asymmetric Key Systems
+  * Uses system of public and private keys
+  * Private and public keys mathematically linked together
+* Advaned Encryption Standard (AES) is standard of U.S. Government
+  * Used because strong against brute force attack
+* Learned that salting is the concept of adding random data to a password before it is hashed to increase security
+* https://www.arcserve.com/blog/5-common-encryption-algorithms-and-unbreakables-future
+* https://youtu.be/NuyzuNBFWxQ?si=1C-a5Coivy2wpFq0
+
 <!--
 * Links you used today (websites, videos, etc)
 * Things you tried, progress you made, etc
