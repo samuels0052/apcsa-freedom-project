@@ -193,7 +193,7 @@ const UserPage = () => {
 };
 ```
 
-### 12/1/24:
+### 12/1/24 - 12/7/24:
 * Started researching encryption algorithms and studied other apps such as WhatsApp
 * Encrypted message is called a cipher
 * Once a password goes through an encryption algorithm it is called a hash
