@@ -209,6 +209,48 @@ const UserPage = () => {
 * https://www.arcserve.com/blog/5-common-encryption-algorithms-and-unbreakables-future
 * https://youtu.be/NuyzuNBFWxQ?si=1C-a5Coivy2wpFq0
 
+### 1/1/25:
+* Followed tutorial to start creating firebase login component to app
+
+```ts
+
+const app = initializeApp(firebaseConfig);
+export const auth = initializeAuth(app, {
+  persistence: getReactNativePersistence(ReactNativeAsyncStorage)
+});
+export const db = getFirestore(app);
+export const storage = getStorage(app);
+
+```
+
+```ts
+const signUp = async () => {
+    try {
+        const user = await createUserWithEmailAndPassword(auth, email, password)
+        if (user) router.replace('/(tabs)');
+    } catch (error: any) {
+        console.log(error)
+        alert('Sign in failed: ' + error.message);
+    }
+}
+```
+```ts
+getAuth().onAuthStateChanged((user) => {
+    if (!user) router.replace('/');
+  });
+```
+* Learned about `<SafeAreaView>` which makes sure content doesn't go off the viewing area and helps provide a content border
+* Learned that some libraries require `metro.config.js` file to change default typescript behavior with apps
+* Struggled with error `TypeError: (0 , _auth.getReactNativePersistence) is not a function`
+* Fixed error by going on stack overflow and learning about
+* Is there better way to do this?
+```tsx
+//@ts-ignore
+import { getReactNativePersistence } from '@firebase/auth/dist/rn/index.js';
+```
+* https://youtu.be/a0KJ7l5sNGw?si=bVRvz_aA0Kx9QYKz
+* https://stackoverflow.com/questions/76961682/typeerror-0-auth-getreactnativepersistence-is-not-a-function
+
 <!--
 * Links you used today (websites, videos, etc)
 * Things you tried, progress you made, etc
