@@ -89,6 +89,7 @@ const deleteTask = (index: number) => {
 ```
 
 ### 10/27/24:
+
 - https://youtu.be/HuwQwNDLaJ8?si=WWWbIhycAxxUUeML
 - Learned how to navigate between different screens in React Native
 - `initialRouteName` is what page the application should start on
@@ -96,6 +97,7 @@ const deleteTask = (index: number) => {
 - Component is similar to a navbar
 - Did not have a lot of time this week to work with app but want to work on implementing `NavigationContainer` in app and do further testing
 - A-ha moment was realizing that you can have multiple screens but still need to set the initial route so app knows where to start
+
 ```tsx
 <NavigationContainer>
   <Stack.Navigator initialRouteName="Home">
@@ -106,26 +108,29 @@ const deleteTask = (index: number) => {
 ```
 
 ### 11/3/24:
-* Followed along to arduino introduction course
-* Got display to output text
-* Created a system to chunk messages every 84 characters to ensure message can be properly displayed and provide a queue
-* Created a local dashboard using Node JS to send messages to the arduino while connected to computer
-* Lost the code when re-setting my laptop :(
-* https://www.youtube.com/watch?v=yi29dbPnu28&feature=youtu.be
-* ![](../blog/img/1.png)
-* ![](../blog/img/2.png)
+
+- Followed along to arduino introduction course
+- Got display to output text
+- Created a system to chunk messages every 84 characters to ensure message can be properly displayed and provide a queue
+- Created a local dashboard using Node JS to send messages to the arduino while connected to computer
+- Lost the code when re-setting my laptop :(
+- https://www.youtube.com/watch?v=yi29dbPnu28&feature=youtu.be
+- ![](../blog/img/1.png)
+- ![](../blog/img/2.png)
 
 ### 11/18/24:
-* Learned how to use buttons with arduino
-* Learned hwot to read a circuit diagram
-  * Terms such as GND (Ground), 5V (5 Vault Pin), 3.3V (3.3 Vault Power Pin)
-  * VIN, 5V, GND all deal with power
-  * Rectangles with ohms are resistors and use omega symbol
-  * LEDs are frequently marked with polarity symbols
-  * Lines are wires
-* https://youtu.be/yBgMJssXqHY?si=y9ude-IU6YvguwuI
-* https://youtu.be/0ZXYRU9KPG8?si=2b4cV8K4ECmHQGVY
-* https://youtu.be/3zKvDF1cUYc?si=SIMUCeGfvLPe0F7e
+
+- Learned how to use buttons with arduino
+- Learned hwot to read a circuit diagram
+  - Terms such as GND (Ground), 5V (5 Vault Pin), 3.3V (3.3 Vault Power Pin)
+  - VIN, 5V, GND all deal with power
+  - Rectangles with ohms are resistors and use omega symbol
+  - LEDs are frequently marked with polarity symbols
+  - Lines are wires
+- https://youtu.be/yBgMJssXqHY?si=y9ude-IU6YvguwuI
+- https://youtu.be/0ZXYRU9KPG8?si=2b4cV8K4ECmHQGVY
+- https://youtu.be/3zKvDF1cUYc?si=SIMUCeGfvLPe0F7e
+
 ```cpp
 const int buttonPin = 2;
 const int ledPin = 13;
@@ -153,8 +158,10 @@ void loop() {
 ```
 
 11/24/25:
-* Learned how to use the expo router in React Native
-* Setup is similar to router in React JS
+
+- Learned how to use the expo router in React Native
+- Setup is similar to router in React JS
+
 ```tsx
 import { Stack } from "expo-router";
 
@@ -173,14 +180,18 @@ const RootLayout = () => {
 
 export default RootLayout;
 ```
-* Create a `(tabs)` folder to hold
-* `index.tsx` within the tabs folder is the home page
+
+- Create a `(tabs)` folder to hold
+- `index.tsx` within the tabs folder is the home page
+
 ```tsx
 import { Link, router } from "expo-router";
 import { Pressable, Text, View } from "react-native";
 ```
-* https://youtu.be/Z20nUdAUGmM?si=APjRSKdGY8HC8O6Z
-* Create dynamic directories the same way as in Next JS with `[id].tsx`
+
+- https://youtu.be/Z20nUdAUGmM?si=APjRSKdGY8HC8O6Z
+- Create dynamic directories the same way as in Next JS with `[id].tsx`
+
 ```tsx
 const UserPage = () => {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -194,67 +205,120 @@ const UserPage = () => {
 ```
 
 ### 12/1/24 - 12/7/24:
-* Started researching encryption algorithms and studied other apps such as WhatsApp
-* Encrypted message is called a cipher
-* Once a password goes through an encryption algorithm it is called a hash
-* Symmetric Key System
-  * Not practical or commonly used
-  * Everyone has the same key but can be challenging to securely distribute
-* Asymmetric Key Systems
-  * Uses system of public and private keys
-  * Private and public keys mathematically linked together
-* Advaned Encryption Standard (AES) is standard of U.S. Government
-  * Used because strong against brute force attack
-* Learned that salting is the concept of adding random data to a password before it is hashed to increase security
-* https://www.arcserve.com/blog/5-common-encryption-algorithms-and-unbreakables-future
-* https://youtu.be/NuyzuNBFWxQ?si=1C-a5Coivy2wpFq0
+
+- Started researching encryption algorithms and studied other apps such as WhatsApp
+- Encrypted message is called a cipher
+- Once a password goes through an encryption algorithm it is called a hash
+- Symmetric Key System
+  - Not practical or commonly used
+  - Everyone has the same key but can be challenging to securely distribute
+- Asymmetric Key Systems
+  - Uses system of public and private keys
+  - Private and public keys mathematically linked together
+- Advaned Encryption Standard (AES) is standard of U.S. Government
+  - Used because strong against brute force attack
+- Learned that salting is the concept of adding random data to a password before it is hashed to increase security
+- https://www.arcserve.com/blog/5-common-encryption-algorithms-and-unbreakables-future
+- https://youtu.be/NuyzuNBFWxQ?si=1C-a5Coivy2wpFq0
 
 ### 1/1/25:
-* Followed tutorial to start creating firebase login component to app
+
+- Followed tutorial to start creating firebase login component to app
 
 ```ts
-
 const app = initializeApp(firebaseConfig);
 export const auth = initializeAuth(app, {
-  persistence: getReactNativePersistence(ReactNativeAsyncStorage)
+  persistence: getReactNativePersistence(ReactNativeAsyncStorage),
 });
 export const db = getFirestore(app);
 export const storage = getStorage(app);
-
 ```
 
 ```ts
 const signUp = async () => {
-    try {
-        const user = await createUserWithEmailAndPassword(auth, email, password)
-        if (user) router.replace('/(tabs)');
-    } catch (error: any) {
-        console.log(error)
-        alert('Sign in failed: ' + error.message);
-    }
-}
+  try {
+    const user = await createUserWithEmailAndPassword(auth, email, password);
+    if (user) router.replace("/(tabs)");
+  } catch (error: any) {
+    console.log(error);
+    alert("Sign in failed: " + error.message);
+  }
+};
 ```
+
 ```ts
 getAuth().onAuthStateChanged((user) => {
-    if (!user) router.replace('/');
-  });
+  if (!user) router.replace("/");
+});
 ```
-* Learned about `<SafeAreaView>` which makes sure content doesn't go off the viewing area and helps provide a content border
-* Learned that some libraries require `metro.config.js` file to change default typescript behavior with apps
-* Struggled with error `TypeError: (0 , _auth.getReactNativePersistence) is not a function`
-* Fixed error by going on stack overflow and learning about
-* Is there better way to do this?
+
+- Learned about `<SafeAreaView>` which makes sure content doesn't go off the viewing area and helps provide a content border
+- Learned that some libraries require `metro.config.js` file to change default typescript behavior with apps
+- Struggled with error `TypeError: (0 , _auth.getReactNativePersistence) is not a function`
+- Fixed error by going on stack overflow and learning about
+- Is there better way to do this?
+
 ```tsx
 //@ts-ignore
-import { getReactNativePersistence } from '@firebase/auth/dist/rn/index.js';
+import { getReactNativePersistence } from "@firebase/auth/dist/rn/index.js";
 ```
-* https://youtu.be/a0KJ7l5sNGw?si=bVRvz_aA0Kx9QYKz
-* https://stackoverflow.com/questions/76961682/typeerror-0-auth-getreactnativepersistence-is-not-a-function
 
+- https://youtu.be/a0KJ7l5sNGw?si=bVRvz_aA0Kx9QYKz
+- https://stackoverflow.com/questions/76961682/typeerror-0-auth-getreactnativepersistence-is-not-a-function
+
+### 1/12/25:
+
+- Started learning more expo methods
+- Expo SecureStore
+  - Allows you to use local device storage
+  - `npx expo install expo-secure-store`
+  - Different configs depending on the operating system of the app. Example: `faceIDPermission` on iphone allows for a user to access storage only with face ID
+  - First have to set an item then can access it
+
+```tsx
+import { useState } from "react";
+import { Text, View, StyleSheet, TextInput, Button } from "react-native";
+import * as SecureStore from "expo-secure-store";
+
+async function save(key, value) {
+  await SecureStore.setItemAsync(key, value);
+}
+
+async function getValueFor(key) {
+  let result = await SecureStore.getItemAsync(key);
+  if (result) {
+    alert("🔐 Here's your value 🔐 \n" + result);
+  } else {
+    alert("No values stored under that key.");
+  }
+}
+```
+
+- Expo FileSystem
+  - Allows you to access local device filesystem
+  - `import * as FileSystem from 'expo-file-system';`
+  - `FileSystem.copyAsync(options)` allows you to copy data from the filestystem and use throughout project
+
+```tsx
+FileSystem.downloadAsync(
+  "http://techslides.com/demos/sample-videos/small.mp4",
+  FileSystem.documentDirectory + "small.mp4"
+)
+  .then(({ uri }) => {
+    console.log("Finished downloading to ", uri);
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+```
+
+- https://docs.expo.dev/develop/user-interface/store-data/
+- https://docs.expo.dev/versions/latest/sdk/filesystem/
+- https://docs.expo.dev/versions/latest/sdk/securestore/
 <!--
-* Links you used today (websites, videos, etc)
-* Things you tried, progress you made, etc
-* Challenges, a-ha moments, etc
-* Questions you still have
-* What you're going to try next
--->
+- Links you used today (websites, videos, etc)
+- Things you tried, progress you made, etc
+- Challenges, a-ha moments, etc
+- Questions you still have
+- What you're going to try next
+  -->
