@@ -16,8 +16,8 @@ export default function RootLayout() {
   };
 
   useEffect(() => {
-    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
-    return subscriber;
+    const user = auth().onAuthStateChanged(onAuthStateChanged);
+    return user;
   }, []);
 
   useEffect(() => {
