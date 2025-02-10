@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "780285973535",
+    "project_id": "apcsa-fp-2025",
+    "storage_bucket": "apcsa-fp-2025.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:780285973535:android:e36e151d8f5d848372b12a",
+        "android_client_info": {
+          "package_name": "com.sjsharivker.fp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJ4h_OMV4KB5nQdUDfMWNTBx5yqdxZmeg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
