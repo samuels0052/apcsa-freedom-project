@@ -25,7 +25,7 @@
   - Fix UI and ensure no bigs (deadline: 4/1)
 - [ ] Finish arduino (deadline: 4/20)
   - **Goal** is to have arduino connect to app using bluetooth to recieve information
-  - Finish arduino code (deadline: 4/10)
+  - Finish arduino code to allow users to send texts to the glasses over bluetooth using Arduino Nano BLE (deadline: 4/10)
   - Implement arduino connection page and ensure it works (deadline: 4/15)
   - Bug testing (deadline: 4/20) 
 
