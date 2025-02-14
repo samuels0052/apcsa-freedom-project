@@ -1,7 +1,7 @@
 # Plan
 
 ## Tool: React Native, Firebase, Arduino
-## Product: Mobile APp and Arduino Smart Glasses Integration
+## Product: Mobile App and Arduino Smart Glasses Integration
 
 ---
 
