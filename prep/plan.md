@@ -1,7 +1,7 @@
 # Plan
 
 ## Tool: React Native, Firebase, Arduino
-## Product: App and Arduino Smart Glasses
+## Product: Mobile APp and Arduino Smart Glasses Integration
 
 ---
 
@@ -21,7 +21,7 @@
   - Fix any bugs or issues (deadline: 3/20)
 - [ ] Create a game system (deadline: 4/1)
   - **Goal**: Allow for users to "work out" their minds with games
-  - Create a game (deadline: 3/25)
+  - Create a basic memory matching game using React Native library (deadline: 3/25)
   - Fix UI and ensure no bigs (deadline: 4/1)
 - [ ] Finish arduino (deadline: 4/20)
   - **Goal** is to have arduino connect to app using bluetooth to recieve information
@@ -32,7 +32,7 @@
 #### Beyond MVP
 
 - [ ] Add more games
-- [ ] Create more settings in user settings page
+- [ ] Create more settings in user settings page such as visibility, privacy
 - [ ] Get Android Build Working
   - Change the firebase structure to allow android SDK to properly use firebase so app can be compiled to google play store
 
