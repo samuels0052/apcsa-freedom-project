@@ -1,7 +1,7 @@
 # Plan
 
-## Tool: 
-## Product: 
+## Tool: React Native, Firebase, Arduino
+## Product: App and Arduino Smart Glasses
 
 ---
 
@@ -9,13 +9,32 @@
 
 #### MVP
 
-- [ ] Task (deadline: X)
-  - [ ] Subtask (deadline: X)
+- [ ] Finish the login system (deadline: 2/17)
+  - **Goal**: Fix pfp not loading / updating properly
+- [ ] Create user settings page (deadline: 2/24)
+  - **Goal**: Allow for users to update information such as name, pfp, and more settings in the future such as visibility preferences
+- [ ] Start working on chat features (deadline: 3/20)
+  - **Goal**: Goal is for users to be able to post images or text and have interaction with others
+  - Create protocol to send messages and update once posted for all users (deadline: 3/1)
+  - Create a following and unfollowing system (deadline: 3/10)
+  - Create algorithms to tailor media based on user following and history (deadline: 3/15)
+  - Fix any bugs or issues (deadline: 3/20)
+- [ ] Create a game system (deadline: 4/1)
+  - **Goal**: Allow for users to "work out" their minds with games
+  - Create a game (deadline: 3/25)
+  - Fix UI and ensure no bigs (deadline: 4/1)
+- [ ] Finish arduino (deadline: 4/20)
+  - **Goal** is to have arduino connect to app using bluetooth to recieve information
+  - Finish arduino code (deadline: 4/10)
+  - Implement arduino connection page and ensure it works (deadline: 4/15)
+  - Bug testing (deadline: 4/20) 
 
 #### Beyond MVP
 
-- [ ] Task
-  - [ ] Subtask
+- [ ] Add more games
+- [ ] Create more settings in user settings page
+- [ ] Get Android Build Working
+  - Change the firebase structure to allow android SDK to properly use firebase so app can be compiled to google play store
 
 
 <!-- EXAMPLE
