@@ -39,3 +39,7 @@ app-example
 
 # firebase config
 auth/
+
+ios/
+
+android/
