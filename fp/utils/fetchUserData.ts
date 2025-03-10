@@ -1,12 +1,19 @@
-import firestore from "@react-native-firebase/firestore";
+import { firestore } from "../firebase.config";
+import {
+  collection,
+  query,
+  where,
+  limit,
+  getDocs,
+  doc,
+  getDoc,
+} from "firebase/firestore";
 
 export async function fetchUserWithUsername(username: string) {
   try {
-    const snapshot = await firestore()
-      .collection("users")
-      .where("username", "==", username)
-      .limit(1)
-      .get();
+    const usersRef = collection(firestore, "users");
+    const q = query(usersRef, where("username", "==", username), limit(1));
+    const snapshot = await getDocs(q);
 
     if (snapshot.empty) {
       return null;
@@ -15,7 +22,7 @@ export async function fetchUserWithUsername(username: string) {
     const userDoc = snapshot.docs[0];
     return userDoc.data();
   } catch (error) {
-    if (error as Error) {
+    if (error instanceof Error) {
       console.error(error);
       return null;
     }
@@ -24,13 +31,16 @@ export async function fetchUserWithUsername(username: string) {
 
 export async function fetchUserWithUID(uid: string) {
   try {
-    const snapshot = await firestore().collection("users").doc(uid).get();
-    if (!snapshot.exists) {
+    const userDoc = doc(firestore, "users", uid);
+    const snapshot = await getDoc(userDoc);
+
+    if (!snapshot.exists()) {
       return null;
     }
+
     return snapshot.data();
   } catch (error) {
-    if (error as Error) {
+    if (error instanceof Error) {
       console.error(error);
       return null;
     }

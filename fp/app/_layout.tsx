@@ -1,24 +1,25 @@
 import { Stack, useRouter, useSegments } from "expo-router";
 import { useEffect, useState } from "react";
-import auth, { FirebaseAuthTypes } from "@react-native-firebase/auth";
+import { auth } from "../firebase.config";
+import { onAuthStateChanged } from "firebase/auth";
 import { View, ActivityIndicator, BackHandler } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import "@/global.css";
+import "../global.css";
 
 export default function RootLayout() {
   const [initializing, setInitializing] = useState(true);
-  const [user, setUser] = useState<FirebaseAuthTypes.User | null>(null);
+  const [user, setUser] = useState(null);
   const router = useRouter();
   const segments = useSegments();
 
-  const onAuthStateChanged = (user: FirebaseAuthTypes.User | null) => {
-    setUser(user);
+  const handleAuthStateChange = (currentUser: any) => {
+    setUser(currentUser);
     if (initializing) setInitializing(false);
   };
 
   useEffect(() => {
-    const loggedOut = auth().onAuthStateChanged(onAuthStateChanged);
-    return loggedOut;
+    const unsubscribe = onAuthStateChanged(auth, handleAuthStateChange);
+    return unsubscribe;
   }, []);
 
   useEffect(() => {
@@ -43,9 +44,7 @@ export default function RootLayout() {
 
   useEffect(() => {
     const handleBackPress = () => {
-      AsyncStorage.clear().catch((error) =>
-        console.log("Error clearing storage:", error)
-      );
+      AsyncStorage.clear().catch(() => {});
       return true;
     };
 
@@ -54,12 +53,13 @@ export default function RootLayout() {
       BackHandler.removeEventListener("hardwareBackPress", handleBackPress);
   }, []);
 
-  if (initializing)
+  if (initializing) {
     return (
       <View className="items-center justify-center flex-1">
         <ActivityIndicator size="large" />
       </View>
     );
+  }
 
   return (
     <Stack screenOptions={{ gestureEnabled: false }}>

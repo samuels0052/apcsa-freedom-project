@@ -1,8 +1,9 @@
 import { View, Text, Button, Image, ActivityIndicator } from "react-native";
 import { useState, useEffect } from "react";
-import auth from "@react-native-firebase/auth";
-import { fetchUserWithUID } from "@/utils/fetchUserData";
-import { calculateAge } from "@/utils/calculateAge";
+import { auth } from "../../firebase.config";
+import { signOut } from "firebase/auth";
+import { fetchUserWithUID } from "../../utils/fetchUserData";
+import { calculateAge } from "../../utils/calculateAge";
 
 interface User {
   timestamp: string;
@@ -22,12 +23,12 @@ const Page = () => {
 
   useEffect(() => {
     const fetchUser = async () => {
-      const currentUser = auth().currentUser;
+      const currentUser = auth.currentUser;
       if (currentUser) {
         const userData = await fetchUserWithUID(currentUser.uid);
         if (userData) {
           setUser(userData as User);
-          const getAge: number = calculateAge("3/29/2007");
+          const getAge: number = calculateAge(userData.birthday);
           setAge(getAge);
         }
       }
@@ -50,7 +51,7 @@ const Page = () => {
         source={{ uri: user?.pfp }}
         className="m-10 w-24 h-24 rounded-full"
       />
-      <Button title="Sign out" onPress={() => auth().signOut()} />
+      <Button title="Sign out" onPress={() => signOut(auth)} />
     </View>
   );
 };

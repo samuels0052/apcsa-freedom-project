@@ -315,6 +315,40 @@ FileSystem.downloadAsync(
 - https://docs.expo.dev/develop/user-interface/store-data/
 - https://docs.expo.dev/versions/latest/sdk/filesystem/
 - https://docs.expo.dev/versions/latest/sdk/securestore/
+
+### 3/9/25:
+
+- Firestore can be faster then real time database because of the better query methods
+- First need to specify reference point in database using `collection` method
+- Use `where` keyword and `==` operator to query through json objects until your attribute is found
+- Can set limit of 1 search for efficiency
+
+```ts
+export async function fetchUserWithUsername(username: string) {
+  try {
+    const usersRef = collection(firestore, "users");
+    const q = query(usersRef, where("username", "==", username), limit(1));
+    const snapshot = await getDocs(q);
+
+    if (snapshot.empty) {
+      return null;
+    }
+
+    const userDoc = snapshot.docs[0];
+    return userDoc.data();
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error);
+      return null;
+    }
+  }
+}
+```
+
+- Need to use android studio to create Android Simulator for expo to call
+- Can run android simulator using `npx expo run:android`
+- Can save build time by running command `npx expo prebuild`
+- IOS has different Firebase code then android
 <!--
 - Links you used today (websites, videos, etc)
 - Things you tried, progress you made, etc

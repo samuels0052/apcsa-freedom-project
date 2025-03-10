@@ -5,14 +5,17 @@ import {
   KeyboardAvoidingView,
   TextInput,
   Button,
-  TouchableOpacity,
   ActivityIndicator,
 } from "react-native";
-import auth from "@react-native-firebase/auth";
+import { auth, firestore } from "../firebase.config";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import { FirebaseError } from "firebase/app";
-import firestore from "@react-native-firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 import * as Crypto from "expo-crypto";
-import { fetchUserWithUsername } from "@/utils/fetchUserData";
+import { fetchUserWithUsername } from "../utils/fetchUserData";
 import DatePicker from "react-native-date-picker";
 
 export default function Index() {
@@ -36,7 +39,9 @@ export default function Index() {
     }
 
     const d = new Date();
-    if (d.toLocaleDateString("en-US") == birthday.toLocaleDateString("en-US")) {
+    if (
+      d.toLocaleDateString("en-US") === birthday.toLocaleDateString("en-US")
+    ) {
       alert("Must set birthday!");
       setLoading(false);
       return;
@@ -74,46 +79,38 @@ export default function Index() {
     }
 
     try {
-      const pfpSalt: number = Math.floor(Math.random() * 100000000);
-      const seed: string = `${pfpSalt}${username}`.toLowerCase().trim();
-      const hash: string = await Crypto.digestStringAsync(
+      const pfpSalt = Math.floor(Math.random() * 100000000);
+      const seed = `${pfpSalt}${username}`.toLowerCase().trim();
+      const hash = await Crypto.digestStringAsync(
         Crypto.CryptoDigestAlgorithm.SHA256,
         seed
       );
-      const pfpHash: string = hash.substring(0, 12);
-      const pfp: string = `https://api.dicebear.com/9.x/bottts-neutral/png?seed=${pfpHash}`;
+      const pfpHash = hash.substring(0, 12);
+      const pfp = `https://api.dicebear.com/9.x/bottts-neutral/png?seed=${pfpHash}`;
 
-      const userCredential = await auth().createUserWithEmailAndPassword(
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
         email,
         password
       );
       const user = userCredential.user;
 
-      try {
-        const docRef = firestore().collection("users").doc(user.uid);
-        await docRef.set({
-          firstName: firstName,
-          lastName: lastName,
-          username: username,
-          uid: user.uid,
-          pfp: pfp,
-          email: email,
-          friends: [],
-          blocked: [],
-          birthday: birthday.toLocaleDateString("en-US"),
-          createdAt: new Date()
-            .toLocaleString("en-US", { hour12: false })
-            .replace(",", " at"),
-        });
-      } catch (error) {
-        console.error(error);
-      }
+      const userDoc = doc(firestore, "users", user.uid);
+      await setDoc(userDoc, {
+        firstName,
+        lastName,
+        username,
+        uid: user.uid,
+        pfp,
+        email,
+        friends: [],
+        blocked: [],
+        birthday: birthday.toLocaleDateString("en-US"),
+        createdAt: new Date().toISOString(),
+      });
     } catch (e) {
       const err = e as FirebaseError;
-      if (
-        err.message ===
-        "[auth/email-already-in-use] The email address is already in use by another account."
-      ) {
+      if (err.code === "auth/email-already-in-use") {
         alert("An account is already registered under this email!");
       } else {
         alert("Error: " + err.message);
@@ -126,13 +123,10 @@ export default function Index() {
   const signIn = async () => {
     setLoading(true);
     try {
-      await auth().signInWithEmailAndPassword(email, password);
+      await signInWithEmailAndPassword(auth, email, password);
     } catch (e) {
       const err = e as FirebaseError;
-      if (
-        err.message ==
-        "[auth/invalid-credential] The supplied auth credential is incorrect, malformed or has expired."
-      ) {
+      if (err.code === "auth/invalid-credential") {
         alert("Incorrect password or account does not exist!");
       } else {
         alert("Error: " + err.message);
@@ -143,7 +137,7 @@ export default function Index() {
   };
 
   return (
-    <View className="flex-1 justify-center	mx-5">
+    <View className="flex-1 justify-center mx-5">
       <KeyboardAvoidingView behavior="padding">
         <View className="m-1">
           <Text className="text-lg font-bold text-black underline">Email:</Text>
