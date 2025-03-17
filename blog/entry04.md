@@ -58,6 +58,8 @@ I am still in stages **4 to 5** of the engineering design process. I am developi
 
 ### Skills
 
+One of the skills I continue growing in is **embracing failure**. I constantly question why I chose this tool because writing code once to work on multiple operating systems is not as simple as it seems. It is incredibly frustrating and annoying when a library or implementation works fine on Android, but the IOS compilation fails. I am constantly dealing with bugs and errors, which take up most of my time and have an enormous mental toll on me. However, I do not give up and rely on online resources such as `Reddit` and `StackOverflow` to assist me. This has led me to grow in the skill of **how to google** because I face compliance and `firebase` errors so often that I've had to adjust my search to find a solution in a more optimal time.
+
 [Previous](entry03.md) | [Next](entry05.md)
 
 [Home](../README.md)
