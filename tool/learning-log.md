@@ -345,6 +345,21 @@ export async function fetchUserWithUsername(username: string) {
 }
 ```
 
+### 3/23/25:
+
+- Created function to send messages and log them in firebase database
+- Used crypto-js to encrypt messages to keep user data secure
+
+```ts
+const hash = CryptoJS.AES.decrypt(message, "insert key here");
+const messageDoc = doc(firestore, "messages");
+await setDoc(messageDoc, {
+  content: hash,
+  author: author,
+  timestamp: timestamp,
+});
+```
+
 - Need to use android studio to create Android Simulator for expo to call
 - Can run android simulator using `npx expo run:android`
 - Can save build time by running command `npx expo prebuild`
