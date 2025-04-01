@@ -360,6 +360,36 @@ await setDoc(messageDoc, {
 });
 ```
 
+### 3/31/25:
+
+-Started researching app layouts to plan page designs
+-Started planning out private messages by specifying if a message goes everywhere or to specific user
+-Updated the structure of a message to handle viewing and access
+
+```ts
+if (isPublic) {
+      await setDoc(messageDoc, {
+        content: hash,
+        author: author,
+        timestamp: timestamp,
+      });
+    } else {
+      await setDoc(messageDoc, {
+        content: hash,
+        author: author,
+        timestamp: timestamp,
+        target: target,
+      });
+    }
+}
+```
+
+-Had more compile issues that I needed to fix because of IOS
+-Removing IOS support
+-Have to do more research on firebase config because now having android issues as well
+-Updated the simulator in android studio
+https://uizard.io/templates/mobile-app-templates/
+
 - Need to use android studio to create Android Simulator for expo to call
 - Can run android simulator using `npx expo run:android`
 - Can save build time by running command `npx expo prebuild`
