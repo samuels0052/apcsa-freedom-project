@@ -37,10 +37,4 @@ yarn-error.*
 
 app-example
 
-auth/
-
-ios/
-
-android/
-
-firebase.config.ts
+firebase.ts

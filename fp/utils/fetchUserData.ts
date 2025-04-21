@@ -1,4 +1,3 @@
-import { firestore } from "../firebase.config";
 import {
   collection,
   query,
@@ -8,41 +7,31 @@ import {
   doc,
   getDoc,
 } from "firebase/firestore";
+import { firestore } from "../firebase";
 
 export async function fetchUserWithUsername(username: string) {
+  if (!username || typeof username !== "string") return null;
+
   try {
     const usersRef = collection(firestore, "users");
     const q = query(usersRef, where("username", "==", username), limit(1));
     const snapshot = await getDocs(q);
 
-    if (snapshot.empty) {
-      return null;
-    }
-
-    const userDoc = snapshot.docs[0];
-    return userDoc.data();
+    return snapshot.empty ? null : snapshot.docs[0].data();
   } catch (error) {
-    if (error instanceof Error) {
-      console.error(error);
-      return null;
-    }
+    return null;
   }
 }
 
 export async function fetchUserWithUID(uid: string) {
+  if (!uid || typeof uid !== "string") return null;
+
   try {
-    const userDoc = doc(firestore, "users", uid);
-    const snapshot = await getDoc(userDoc);
+    const userRef = doc(firestore, "users", uid);
+    const snapshot = await getDoc(userRef);
 
-    if (!snapshot.exists()) {
-      return null;
-    }
-
-    return snapshot.data();
+    return snapshot.exists() ? snapshot.data() : null;
   } catch (error) {
-    if (error instanceof Error) {
-      console.error(error);
-      return null;
-    }
+    return null;
   }
 }

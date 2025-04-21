@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "fp",
-    "slug": "fp",
+    "name": "apcsa-fp",
+    "slug": "apcsa-fp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -9,13 +9,9 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.sjsharivker.apcsafp",
-      "googleServicesFile": "auth/GoogleService-Info.plist"
+      "supportsTablet": true
     },
     "android": {
-      "package": "com.sjsharivker.apcsafp",
-      "googleServicesFile": "auth/google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
@@ -36,16 +32,7 @@
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
-      ],
-      [
-        "expo-build-properties",
-        {
-          "ios": {
-            "useFrameworks": "static"
-          }
-        }
-      ],
-      "expo-asset"
+      ]
     ],
     "experiments": {
       "typedRoutes": true
