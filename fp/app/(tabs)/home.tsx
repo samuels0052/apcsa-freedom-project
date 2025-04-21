@@ -9,6 +9,7 @@ export default function Home() {
     lastName: string;
     username: string;
     pfp: string;
+    about: string;
   } | null>(null);
 
   useEffect(() => {
@@ -23,6 +24,7 @@ export default function Home() {
           lastName: data.lastName,
           username: data.username,
           pfp: data.pfp,
+          about: data.about,
         });
       }
     };
@@ -44,6 +46,12 @@ export default function Home() {
           <Text className="text-xl font-bold mb-5">
             {data.firstName} {data.lastName}
           </Text>
+          <Text className="text-xl font-bold">About Me:</Text>
+          {data.about ? (
+            <Text className="text-lg font-bold">{data.about}</Text>
+          ) : (
+            <Text className="text-lg font-bold">No about section.</Text>
+          )}
         </>
       ) : (
         <Text className="text-lg mb-4">Loading user :)</Text>

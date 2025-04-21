@@ -19,12 +19,14 @@ export default function Login() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [username, setUsername] = useState("");
+  const [about, setAbout] = useState("");
   const [isLogin, setIsLogin] = useState(true);
   const [loading, setLoading] = useState(false);
 
   const firstNameRef = useRef<TextInput>(null);
   const lastNameRef = useRef<TextInput>(null);
   const usernameRef = useRef<TextInput>(null);
+  const aboutRef = useRef<TextInput>(null);
   const emailRef = useRef<TextInput>(null);
   const passwordRef = useRef<TextInput>(null);
 
@@ -97,6 +99,7 @@ export default function Login() {
           email,
           username,
           pfp,
+          about,
           createdAt: new Date().toISOString(),
         });
       }
@@ -153,6 +156,18 @@ export default function Login() {
             placeholder="jdoe123"
             value={username}
             onChangeText={setUsername}
+            maxLength={50}
+            className="border w-full mb-4 p-2 rounded"
+            keyboardType="default"
+            autoCapitalize="none"
+            returnKeyType="next"
+            onSubmitEditing={() => aboutRef.current?.focus()}
+          />
+          <TextInput
+            ref={aboutRef}
+            placeholder="Hi my name is John. I like fishing."
+            value={about}
+            onChangeText={setAbout}
             maxLength={50}
             className="border w-full mb-4 p-2 rounded"
             keyboardType="default"
