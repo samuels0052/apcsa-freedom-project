@@ -18,6 +18,16 @@ import {
 import { firestore, auth } from "@/firebase";
 import { fetchUserWithUID } from "@/utils/fetchUserData";
 import { useEffect, useState } from "react";
+import Aes from "react-native-aes-crypto";
+
+const generateKey = (
+  password: string,
+  salt: string,
+  cost: number,
+  length: number
+): Promise<string> => {
+  return Aes.pbkdf2(password, salt, cost, length, "sha256");
+};
 
 export default function Chat() {
   const [input, setInput] = useState("");
@@ -25,23 +35,48 @@ export default function Chat() {
   const [messages, setMessages] = useState<any[]>([]);
 
   useEffect(() => {
-    if (!auth.currentUser) {
-      return;
-    }
+    if (!auth.currentUser) return;
+
     fetchUserWithUID(auth.currentUser.uid).then((data) => {
       if (data) setUserData(data);
     });
+
+    const password = "Ewp@^WMpb13WVrTqzZfeG@qbu$$B623F";
+    const salt = "staticSalt";
 
     const q = query(
       collection(firestore, "chats"),
       orderBy("timestamp", "asc")
     );
-    const renderMessages = onSnapshot(q, (snapshot) => {
-      const chats = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-      setMessages(chats);
+
+    const renderMessages = onSnapshot(q, async (snapshot) => {
+      const key = await generateKey(password, salt, 5000, 256);
+
+      const decryptedMessages = await Promise.all(
+        snapshot.docs.map(async (doc) => {
+          const data = doc.data();
+          let decryptedText = "[Error decrypting]";
+
+          try {
+            decryptedText = await Aes.decrypt(
+              data.text,
+              key,
+              data.iv,
+              "aes-256-cbc"
+            );
+          } catch (error) {
+            console.error("Decryption failed:", error);
+          }
+
+          return {
+            id: doc.id,
+            ...data,
+            text: decryptedText,
+          };
+        })
+      );
+
+      setMessages(decryptedMessages);
     });
 
     return () => renderMessages();
@@ -49,14 +84,20 @@ export default function Chat() {
 
   const handleSend = async () => {
     if (!input.trim()) return;
-
     if (input.trim().length > 280) {
       alert("Messages must be under 280 characters!");
       return;
     }
 
+    const password = "Ewp@^WMpb13WVrTqzZfeG@qbu$$B623F";
+    const salt = "staticSalt";
+    const key = await generateKey(password, salt, 5000, 256);
+    const iv = await Aes.randomKey(16);
+    const cipher = await Aes.encrypt(input.trim(), key, iv, "aes-256-cbc");
+
     await addDoc(collection(firestore, "chats"), {
-      text: input.trim(),
+      text: cipher,
+      iv: iv,
       timestamp: Timestamp.now(),
       author: userData?.username,
       pfp: userData?.pfp,
