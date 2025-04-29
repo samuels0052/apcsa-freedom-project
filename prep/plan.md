@@ -1,6 +1,7 @@
 # Plan
 
 ## Tool: React Native, Firebase, Arduino
+
 ## Product: Mobile App and Arduino Smart Glasses Integration
 
 ---
@@ -27,15 +28,14 @@
   - **Goal** is to have arduino connect to app using bluetooth to recieve information
   - Finish arduino code to allow users to send texts to the glasses over bluetooth using Arduino Nano BLE (deadline: 4/10)
   - Implement arduino connection page and ensure it works (deadline: 4/15)
-  - Bug testing (deadline: 4/20) 
+  - Bug testing (deadline: 4/20)
 
 #### Beyond MVP
 
-- [ ] Add more games
-- [ ] Create more settings in user settings page such as visibility, privacy
-- [ ] Get Android Build Working
-  - Change the firebase structure to allow android SDK to properly use firebase so app can be compiled to google play store
-
+- 5/2/25 = Finish fixing compilation issues
+- 5/9/25 = Finish integrating the smart glass code into the main app by researching how React Native handles serial ports
+- 5/9/25 = Create at least 1 game by following along to this video (https://youtu.be/ruHZ8X-R1Fg?si=hzJ_8ayvlZDOcE-x)
+- 5/15/25 = Finish UI and add styling across pages
 
 <!-- EXAMPLE
 
@@ -61,10 +61,6 @@
 - [ ] A multiple choice quizzer that will test the user’s knowledge of the solution
 
 -->
-
-
-
-
 
 <!-- DO NOT USE THIS YET
 
