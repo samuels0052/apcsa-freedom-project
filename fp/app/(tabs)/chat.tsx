@@ -108,7 +108,7 @@ export default function Chat() {
 
   return (
     <KeyboardAvoidingView
-      className="flex-1 justify-between px-4 py-2 bg-white"
+      className="flex-1 justify-between px-4 py-2 bg-slate-900"
       behavior="padding"
     >
       <FlatList
@@ -125,8 +125,10 @@ export default function Chat() {
               <View className="w-6 h-6 rounded-full bg-gray-300 mt-1" />
             )}
             <View className="flex-1">
-              <Text className="font-bold text-sm">{item.author}</Text>
-              <Text className="text-base">{item.text}</Text>
+              <Text className="font-bold text-sm text-blue-200">
+                {item.author}
+              </Text>
+              <Text className="text-base text-slate-100">{item.text}</Text>
             </View>
           </View>
         )}

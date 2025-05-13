@@ -1,9 +1,9 @@
 import { View, Text } from "react-native";
 
-export default function Resources() {
+export default function Glasses() {
   return (
     <View>
-      <Text>Resources Page</Text>
+      <Text>Glasses Page</Text>
     </View>
   );
 }

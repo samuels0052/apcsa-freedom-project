@@ -120,8 +120,8 @@ export default function Login() {
   };
 
   return (
-    <View className="flex-1 items-center justify-center px-6 bg-white">
-      <Text className="text-2xl font-bold mb-6">
+    <View className="flex-1 items-center justify-center px-6 bg-slate-900">
+      <Text className="text-3xl font-bold text-blue-400 mb-6">
         {isLogin ? "Login" : "Register"}
       </Text>
 
@@ -130,86 +130,68 @@ export default function Login() {
           <TextInput
             ref={firstNameRef}
             placeholder="John"
+            placeholderTextColor="#94a3b8"
             value={firstName}
             onChangeText={setFirstName}
-            maxLength={50}
-            className="border w-full mb-4 p-2 rounded"
-            keyboardType="default"
-            autoCapitalize="words"
-            returnKeyType="next"
-            onSubmitEditing={() => lastNameRef.current?.focus()}
+            className="bg-slate-800 border border-slate-700 text-slate-100 w-full mb-4 p-2 rounded"
           />
           <TextInput
             ref={lastNameRef}
             placeholder="Doe"
+            placeholderTextColor="#94a3b8"
             value={lastName}
             onChangeText={setLastName}
-            maxLength={50}
-            className="border w-full mb-4 p-2 rounded"
-            keyboardType="default"
-            autoCapitalize="words"
-            returnKeyType="next"
-            onSubmitEditing={() => usernameRef.current?.focus()}
+            className="bg-slate-800 border border-slate-700 text-slate-100 w-full mb-4 p-2 rounded"
           />
           <TextInput
             ref={usernameRef}
             placeholder="jdoe123"
+            placeholderTextColor="#94a3b8"
             value={username}
             onChangeText={setUsername}
-            maxLength={50}
-            className="border w-full mb-4 p-2 rounded"
-            keyboardType="default"
-            autoCapitalize="none"
-            returnKeyType="next"
-            onSubmitEditing={() => aboutRef.current?.focus()}
+            className="bg-slate-800 border border-slate-700 text-slate-100 w-full mb-4 p-2 rounded"
           />
           <TextInput
             ref={aboutRef}
-            placeholder="Hi my name is John. I like fishing."
+            placeholder="Tell us about yourself..."
+            placeholderTextColor="#94a3b8"
             value={about}
             onChangeText={setAbout}
-            maxLength={50}
-            className="border w-full mb-4 p-2 rounded"
-            keyboardType="default"
-            autoCapitalize="none"
-            returnKeyType="next"
-            onSubmitEditing={() => emailRef.current?.focus()}
+            className="bg-slate-800 border border-slate-700 text-slate-100 w-full mb-4 p-2 rounded"
           />
         </>
       )}
 
       <TextInput
         ref={emailRef}
-        placeholder="jdoe@gmail.com"
+        placeholder="email@example.com"
+        placeholderTextColor="#94a3b8"
         value={email}
         onChangeText={setEmail}
-        maxLength={100}
-        className="border w-full mb-4 p-2 rounded"
-        keyboardType="email-address"
-        autoCapitalize="none"
-        returnKeyType="next"
-        onSubmitEditing={() => passwordRef.current?.focus()}
+        className="bg-slate-800 border border-slate-700 text-slate-100 w-full mb-4 p-2 rounded"
       />
 
       <TextInput
         ref={passwordRef}
-        placeholder="******"
+        placeholder="Password"
+        placeholderTextColor="#94a3b8"
         value={password}
         onChangeText={setPassword}
-        maxLength={100}
-        className="border w-full mb-4 p-2 rounded"
         secureTextEntry
-        returnKeyType="done"
-        onSubmitEditing={handleAuth}
+        className="bg-slate-800 border border-slate-700 text-slate-100 w-full mb-4 p-2 rounded"
       />
 
       {loading ? (
-        <ActivityIndicator size="small" className="mt-4" />
+        <ActivityIndicator size="small" className="mt-4" color="#60a5fa" />
       ) : (
         <>
-          <Button title={isLogin ? "Login" : "Register"} onPress={handleAuth} />
+          <Button
+            title={isLogin ? "Login" : "Register"}
+            onPress={handleAuth}
+            color="#3b82f6"
+          />
           <Text
-            className="mt-4 text-red-600"
+            className="mt-4 text-blue-400 underline"
             onPress={() => setIsLogin(!isLogin)}
           >
             {isLogin ? "New here? Register" : "Already have an account? Login"}

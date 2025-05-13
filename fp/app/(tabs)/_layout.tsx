@@ -19,34 +19,41 @@ export default function TabLayout() {
       screenOptions={({ route }) => ({
         tabBarIcon: ({ color, size }) => {
           let iconName: keyof typeof Ionicons.glyphMap = "home";
-
           if (route.name === "home") iconName = "home";
           if (route.name === "chat") iconName = "chatbubble-ellipses";
-          if (route.name === "resources") iconName = "book";
+          if (route.name === "glasses") iconName = "bluetooth";
           if (route.name === "games") iconName = "game-controller";
-
           return <Ionicons name={iconName} size={size} color={color} />;
         },
-        tabBarActiveTintColor: "red",
-        tabBarInactiveTintColor: "gray",
-        headerTitle: route.name.charAt(0).toUpperCase() + route.name.slice(1),
+        tabBarActiveTintColor: "#3b82f6",
+        tabBarInactiveTintColor: "#cbd5e1",
+        tabBarStyle: {
+          backgroundColor: "#0f172a",
+          borderTopColor: "#1e293b",
+          height: 60,
+          paddingBottom: 4,
+        },
+        headerStyle: {
+          backgroundColor: "#1e293b",
+        },
+        headerTintColor: "#f1f5f9",
+        headerTitleStyle: {
+          fontWeight: "bold",
+        },
         headerRight: () => (
           <View className="mr-5">
-            <Button title="Log out" onPress={handleLogout} />
+            <Button title="Log out" color="#3b82f6" onPress={handleLogout} />
           </View>
         ),
         tabBarLabel: ({ focused }) => (
           <Text
-            className={`text-xs ${focused ? "text-red-600" : "text-gray-600"}`}
+            className={`text-xs ${
+              focused ? "text-blue-400" : "text-slate-400"
+            }`}
           >
             {route.name.charAt(0).toUpperCase() + route.name.slice(1)}
           </Text>
         ),
-        tabBarStyle: {
-          backgroundColor: "#fff",
-          paddingBottom: 4,
-          height: 60,
-        },
       })}
     />
   );
