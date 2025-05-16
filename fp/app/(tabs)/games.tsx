@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { View, Text, Pressable, ScrollView, Modal, Button } from "react-native";
 import Game1 from "../games/game1";
-import Game2 from "../games/game2";
 
 export default function Games() {
   const [activeGame, setActiveGame] = useState<null | "game1" | "game2">(null);
@@ -20,19 +19,10 @@ export default function Games() {
         </View>
       </Pressable>
 
-      <Pressable onPress={() => setActiveGame("game2")}>
-        <View className="bg-blue-800 p-5 rounded-xl shadow-lg">
-          <Text className="text-slate-100 text-lg font-semibold">
-            Play Game 2
-          </Text>
-        </View>
-      </Pressable>
-
       <Modal visible={activeGame !== null} animationType="slide">
         <View className="flex-1 bg-slate-900 p-4">
           <Button title="Close" onPress={closeModal} color="#3b82f6" />
           {activeGame === "game1" && <Game1 />}
-          {activeGame === "game2" && <Game2 />}
         </View>
       </Modal>
     </ScrollView>

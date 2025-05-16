@@ -10,14 +10,26 @@
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.anonymous.apcsafp"
+      "bundleIdentifier": "com.sjsharivker.apcsafp",
+      "googleServicesFile": "./GoogleService-Info.plist",
+      "infoPlist": {
+        "NSBluetoothAlwaysUsageDescription": "We need access to Bluetooth to scan and connect to nearby devices."
+      }
     },
     "android": {
+      "package": "com.sjsharivker.apcsafp",
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.anonymous.apcsafp"
+      "permissions": [
+        "android.permission.BLUETOOTH",
+        "android.permission.BLUETOOTH_ADMIN",
+        "android.permission.BLUETOOTH_CONNECT",
+        "android.permission.BLUETOOTH_SCAN",
+        "android.permission.ACCESS_FINE_LOCATION"
+      ]
     },
     "web": {
       "bundler": "metro",
@@ -33,6 +45,18 @@
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
+        }
+      ],
+      "react-native-ble-plx",
+      [
+        "react-native-permissions",
+        {
+          "permissions": [
+            "BLUETOOTH",
+            "BLUETOOTH_CONNECT",
+            "BLUETOOTH_SCAN",
+            "ACCESS_FINE_LOCATION"
+          ]
         }
       ]
     ],

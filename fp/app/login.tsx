@@ -10,6 +10,7 @@ import { FirebaseError } from "firebase/app";
 import { doc, setDoc } from "firebase/firestore";
 import * as Crypto from "expo-crypto";
 import { fetchUserWithUsername } from "../utils/fetchUserData";
+import { Image } from "react-native";
 
 export default function Login() {
   const router = useRouter();
@@ -34,38 +35,38 @@ export default function Login() {
     setLoading(true);
 
     if (!isLogin) {
-      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.trim())) {
         alert("Email must be in a valid format!");
         setLoading(false);
         return;
       }
 
-      if (/[^a-zA-Z0-9]/.test(username)) {
+      if (/[^a-zA-Z0-9]/.test(username.trim())) {
         alert("Username can only contain letters or numbers!");
         setLoading(false);
         return;
       }
 
-      const doesUsernameExist = await fetchUserWithUsername(username);
+      const doesUsernameExist = await fetchUserWithUsername(username.trim());
       if (doesUsernameExist) {
         alert("This username is taken!");
         setLoading(false);
         return;
       }
 
-      if (/[^a-zA-Z0-9]/.test(firstName)) {
+      if (/[^a-zA-Z0-9]/.test(firstName.trim())) {
         alert("First Name can only contain letters or numbers!");
         setLoading(false);
         return;
       }
 
-      if (/[^a-zA-Z0-9]/.test(lastName)) {
+      if (/[^a-zA-Z0-9]/.test(lastName.trim())) {
         alert("Last Name can only contain letters or numbers!");
         setLoading(false);
         return;
       }
 
-      if (password.length < 6) {
+      if (password.trim().length < 6) {
         alert("Password must be at least 6 characters!");
         setLoading(false);
         return;
@@ -74,7 +75,7 @@ export default function Login() {
 
     try {
       if (isLogin) {
-        await signInWithEmailAndPassword(auth, email, password);
+        await signInWithEmailAndPassword(auth, email.trim(), password.trim());
       } else {
         const userCredential = await createUserWithEmailAndPassword(
           auth,
@@ -121,6 +122,11 @@ export default function Login() {
 
   return (
     <View className="flex-1 items-center justify-center px-6 bg-slate-900">
+      <Image
+        source={require("../assets/images/logo.png")}
+        className="w-52 h-52 mb-4"
+        resizeMode="contain"
+      />
       <Text className="text-3xl font-bold text-blue-400 mb-6">
         {isLogin ? "Login" : "Register"}
       </Text>
