@@ -13,7 +13,7 @@ export default function Glasses() {
   const [reminder, setReminder] = useState("");
   const [lastWeatherSent, setLastWeatherSent] = useState<number | null>(null);
 
-  const SERVER_URL = "http://192.168.1.13:3001";
+  const SERVER_URL = "http://100.67.121.69:3001";
 
   const getWeatherAndSend = async () => {
     if (!city.trim()) {
