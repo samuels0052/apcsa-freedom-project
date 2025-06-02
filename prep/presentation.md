@@ -1,16 +1,19 @@
 # Presentation Plan
 
 ## Hook
-* 
+
+How would you feel if after working your whole life, you were left alone in a nursing home to be forgotten? No family to visit or people to talk to or stimulate your mind. That's why I'm introducing Tirgum Lens a mobile app that connects you to a global community with mobile games to help stimulate your mind. And that's not it! You are also able to use the app to control an Arduino device to assist you with day to day functions.
 
 ## Product
-* 
+* mobile app that connects with an arduino
+* react native with expo framework, Arduino, firebase, express JS
 
 ## Process
-* 
+* app > web server > arduino
+* Explain that need to use a web server to communicate between my app and arduino since emulator can't read serial ports
 
 ## Conclusion
-* 
+* Let's help connect the older members of our society one person at a time to ensure that no one is left behind. It's time to be the change in the world that we want to see.
 
 <!-- EXAMPLE
 
